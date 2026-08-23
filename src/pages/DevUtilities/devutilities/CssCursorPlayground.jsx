@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useTheme } from "../../../context/ThemeContext";
+import {Link} from "react-router-dom";
 
 export default function CssCursorPlayground() {
     const { dark } = useTheme();
@@ -36,25 +37,39 @@ export default function CssCursorPlayground() {
     };
 
     return (
-        <div className="p-6 max-w-4xl mx-auto">
-            <h1 className="text-2xl font-bold mb-2">CSS Cursor Playground</h1>
-            <p className="mb-8 text-gray-600">
-                Hover over the cards to test the effect. Click at the card to copy the CSS style code.
-            </p>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {cursors.map((cursor) => (
-                    <div
-                        key={cursor}
-                        onClick={() => copyToClipboard(cursor)}
-                        className="flex items-center justify-center h-24 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white text-gray-700"
-                        style={{ cursor: cursor }}
+        <div className={`min-h-screen ${theme.page} transition-colors duration-300`}>
+            <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+                <div className="mb-8">
+                    <Link
+                        to="/devutilities"
+                        className={`mb-4 inline-flex text-sm ${theme.muted} hover:underline`}
                     >
-            <span className="font-mono text-sm">
-              {copied === cursor ? 'Copied!' : cursor}
-            </span>
-                    </div>
-                ))}
+                        ← Back to Dev Utilities
+                    </Link>
+
+                    <h1 className="text-3xl font-bold tracking-tight">
+                        CSS Cursor Playground
+                    </h1>
+
+                    <p className={`mt-2 max-w-3xl ${theme.muted}`}>
+                        Hover over the cards to test the effect. Click at the card to copy the CSS style code.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {cursors.map((cursor) => (
+                        <div
+                            key={cursor}
+                            onClick={() => copyToClipboard(cursor)}
+                            className={`flex items-center justify-center h-24 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white text-gray-700`}
+                            style={{ cursor: cursor }}
+                        >
+                            <span className="font-mono text-sm">
+                            {copied === cursor ? 'Copied!' : cursor}
+                        </span>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );

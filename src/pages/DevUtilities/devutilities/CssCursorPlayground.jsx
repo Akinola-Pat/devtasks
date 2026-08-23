@@ -61,7 +61,7 @@ export default function CssCursorPlayground() {
                         <div
                             key={cursor}
                             onClick={() => copyToClipboard(cursor)}
-                            className={`flex items-center justify-center h-24 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white text-gray-700`}
+                            className={`flex items-center justify-center h-28 rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-1 ${theme.panel} ${theme.cardHover}`}
                             style={{ cursor: cursor }}
                         >
                             <span

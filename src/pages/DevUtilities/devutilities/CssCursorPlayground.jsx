@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function CssCursorPlayground() {
+export default function CssCursorPlayground() {
     const [copied, setCopied] = useState('');
 
     // List of the most used CSS' cursors

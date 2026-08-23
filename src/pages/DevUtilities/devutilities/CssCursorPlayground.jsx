@@ -6,21 +6,18 @@ export default function CssCursorPlayground() {
     const { dark } = useTheme();
     const [copied, setCopied] = useState('');
 
-    const theme = useMemo(
-        () =>
-            dark
-                ? {
-                    page: "bg-zinc-950 text-zinc-100",
-                    panel: "bg-zinc-900/60 border-zinc-800",
-                    muted: "text-zinc-400",
-                }
-                : {
-                    page: "bg-[#F8F9FA] text-zinc-900",
-                    panel: "bg-white border-zinc-200",
-                    muted: "text-zinc-500",
-                },
-        [dark],
-    );
+    const theme = {
+        light: {
+            wrapper: "bg-[#F8F9FA] text-zinc-900",
+            card: "bg-white border-zinc-200/85 hover:border-zinc-400 hover:shadow-md hover:-translate-y-1",
+            muted: "text-zinc-500",
+        },
+        dark: {
+            wrapper: "bg-[#090A0F] text-zinc-100",
+            card: "bg-zinc-900/50 border-zinc-800/85 hover:border-zinc-600 hover:shadow-[0_8px_30px_rgb(0,0,0,0.4)] hover:-translate-y-1",
+            muted: "text-zinc-400",
+        },
+    };
 
     // List of the most used CSS cursors
     const cursors = [

@@ -1,9 +1,27 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function CssCursorPlayground() {
+    const { dark } = useTheme();
     const [copied, setCopied] = useState('');
 
-    // List of the most used CSS' cursors
+    const theme = useMemo(
+        () =>
+            dark
+                ? {
+                    page: "bg-zinc-950 text-zinc-100",
+                    panel: "bg-zinc-900/60 border-zinc-800",
+                    muted: "text-zinc-400",
+                }
+                : {
+                    page: "bg-[#F8F9FA] text-zinc-900",
+                    panel: "bg-white border-zinc-200",
+                    muted: "text-zinc-500",
+                },
+        [dark],
+    );
+
+    // List of the most used CSS cursors
     const cursors = [
         'auto', 'default', 'pointer', 'crosshair',
         'move', 'text', 'wait', 'help',

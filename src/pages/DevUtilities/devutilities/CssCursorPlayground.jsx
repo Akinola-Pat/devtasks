@@ -65,7 +65,6 @@ export default function CssCursorPlayground() {
                             style={{ cursor: cursor }}
                         >
                             <span
-                                // Paso 4: Cambio a color verde al copiar
                                 className={`font-mono text-sm font-semibold transition-colors duration-200 ${
                                     copied === cursor
                                         ? 'text-green-500 dark:text-green-400'

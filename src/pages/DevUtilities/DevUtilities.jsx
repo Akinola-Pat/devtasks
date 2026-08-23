@@ -1661,6 +1661,27 @@ const DevUtilities = () => {
         </svg>
       ),
     },
+    {
+      title: "CSS Cursor Playground",
+      description:
+          "Play around, test, and copy different cursor CSS style effects.",
+      path: "/devutilities/css-cursor-playground",
+      icon: (
+          <svg
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+          >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"
+            />
+          </svg>
+      ),
+    }
   ];
 
   const devUtilsSection = SIDEBAR_SECTIONS.find(

@@ -533,6 +533,11 @@ const SIDEBAR_SECTIONS = [
         description: "Calculate budget based on your website's metrics.",
         path: "/devutilities/performance-budget",
       },
+      {
+        label: "CSS Cursor Playground",
+        description: "Play around, test, and copy different cursor CSS style effects.",
+        path: "/devutilities/css-cursor-playground",
+      },
     ],
   },
 ];

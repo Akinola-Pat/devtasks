@@ -22,6 +22,7 @@ import DeleteHistory from "./pages/TaskManagement/taskmanage/DeleteHistory";
 import ListTasks from "./pages/TaskManagement/taskmanage/ListTasks";
 import JsonTypesConverter from "./pages/DevUtilities/devutilities/JsonTypesConverter";
 import RobotsTxtGenerator from "./pages/DevUtilities/devutilities/RobotsTxtGenerator";
+import CssCursorPlayground from "./pages/DevUtilities/devutilities/CssCursorPlayground.jsx"
 
 // Resource Hub Imports
 import ResourceHub from "./pages/ResourceHub/ResourceHub";
@@ -712,6 +713,10 @@ function AppInner({ toggleHUD, hudVisible }) {
               <Route
                 path="/devutilities/security-headers"
                 element={<SecurityHeaders />}
+              />
+              <Route
+                  path="/devutilities/css-cursor-playground"
+                  element={<CssCursorPlayground />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

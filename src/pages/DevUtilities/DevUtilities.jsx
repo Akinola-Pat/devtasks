@@ -48,12 +48,24 @@ const DevUtilities = () => {
   });
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const CATEGORIES = [
+    "All",
+    "JSON & Data",
+    "CSS & Styling",
+    "Security & Crypto",
+    "Web & Network",
+    "Media & Graphics",
+    "Code & Text",
+  ];
 
   const cards = [
     {
       title: "Hex Viewer & Binary Inspector",
       description:
         "Inspect file binary headers, offsets, hex patterns, and ASCII streams client-side offline.",
+      category: "Code & Text",
       path: "/devutilities/hex-inspector",
       icon: (
         <svg
@@ -75,6 +87,7 @@ const DevUtilities = () => {
       title: "Base64 & URL Converter Suite",
       description:
         "Encode and decode Base64 strings, URL components, and image files completely offline.",
+      category: "Security & Crypto",
       path: "/devutilities/base64",
 
       icon: (
@@ -98,6 +111,7 @@ const DevUtilities = () => {
       description:
         "Optimize, clean, and convert SVG code into optimized React JSX/TSX components or Data URIs.",
       keywords: "jsx react component tsx svg data uri",
+      category: "Media & Graphics",
       path: "/devutilities/svg-optimizer",
       icon: (
         <svg
@@ -120,6 +134,7 @@ const DevUtilities = () => {
       description:
         "Merge multiple standalone SVGs into a single optimized <symbol>-based spritesheet.",
       keywords: "svg sprite spritesheet symbol icon merge bundle",
+      category: "Media & Graphics",
       path: "/devutilities/svg-spritesheet-merger",
       icon: (
         <svg
@@ -141,6 +156,7 @@ const DevUtilities = () => {
       title: "Morse Code Converter",
       description:
         "Convert text to Morse code and decode Morse code back to text.",
+      category: "Code & Text",
       path: "/devutilities/morse-code",
       icon: (
         <svg
@@ -162,6 +178,7 @@ const DevUtilities = () => {
       title: "YAML ↔ TOML Converter",
       description:
         "Convert configuration structures between YAML and TOML syntax patterns completely offline.",
+      category: "JSON & Data",
       path: "/devutilities/yaml-toml",
       icon: (
         <svg
@@ -183,6 +200,7 @@ const DevUtilities = () => {
       title: "CSS Unit & Fluid Typography",
       description:
         "Convert CSS units instantly and generate fluid typography clamp() functions.",
+      category: "CSS & Styling",
       path: "/devutilities/css-unit-converter",
       icon: (
         <svg
@@ -204,6 +222,7 @@ const DevUtilities = () => {
       title: "Regex Tester",
       description:
         "Test regular expressions with flags, highlights, matching text, and capturing groups.",
+      category: "Code & Text",
       path: "/devutilities/regex",
       icon: (
         <svg
@@ -225,6 +244,7 @@ const DevUtilities = () => {
       title: "JSON & Data Format Suite",
       description:
         "Format, validate, beautify, minify, and convert JSON, YAML, CSV and XML data.",
+      category: "JSON & Data",
       path: "/devutilities/json-yaml-csv-xml",
       icon: (
         <svg
@@ -246,6 +266,7 @@ const DevUtilities = () => {
       title: "JSON to Types & Zod Converter",
       description:
         "Convert raw JSON into TypeScript interfaces/types, Go structs, or Zod schemas with customizable configurations.",
+      category: "JSON & Data",
       path: "/devutilities/json-types-converter",
       icon: (
         <svg
@@ -267,6 +288,7 @@ const DevUtilities = () => {
       title: "XML Validator & Formatter",
       description:
         "Validate syntax and beautify or minify XML data, with exact error line and column details.",
+      category: "JSON & Data",
       path: "/devutilities/xml-validator",
       icon: (
         <svg
@@ -289,6 +311,7 @@ const DevUtilities = () => {
       title: "URL Parser & Query Builder",
       description:
         "Parse URLs into protocol, hostname, port, pathname, hash, and editable query parameters in real time.",
+      category: "Web & Network",
       path: "/devutilities/url-parser",
       icon: (
         <svg
@@ -311,6 +334,7 @@ const DevUtilities = () => {
       title: "Keyboard Keycode Inspector",
       description:
         "Inspect keyboard events, key codes, modifiers and physical keyboard layout in real time.",
+      category: "Code & Text",
       path: "/devutilities/keycode-inspector",
       icon: (
         <svg
@@ -332,6 +356,7 @@ const DevUtilities = () => {
       title: "UUID Generator",
       description:
         "Generate RFC4122-compliant v4 UUIDs offline with formatting options.",
+      category: "Security & Crypto",
       path: "/devutilities/uuid",
       icon: (
         <svg
@@ -353,6 +378,7 @@ const DevUtilities = () => {
       title: "JWT Studio",
       description:
         "Decode, inspect, edit, sign, and encode JSON Web Token header and payload data offline.",
+      category: "Security & Crypto",
       path: "/devutilities/jwt",
       icon: (
         <svg
@@ -375,6 +401,7 @@ const DevUtilities = () => {
       description:
         "Compare two text blocks line-by-line, or perform a structural JSON comparison ignoring key order and formatting.",
       keywords: "json diff structural compare",
+      category: "JSON & Data",
       path: "/devutilities/diff",
       icon: (
         <svg
@@ -396,6 +423,7 @@ const DevUtilities = () => {
       title: "Code Sandbox",
       description:
         "Instantly test raw HTML/CSS/JS with a live preview. No local environment required.",
+      category: "Code & Text",
       path: "/devutilities/code",
       icon: (
         <svg
@@ -417,6 +445,7 @@ const DevUtilities = () => {
       title: "Hash Generator",
       description:
         "Generate MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes directly in the browser.",
+      category: "Security & Crypto",
       path: "/devutilities/hash",
       icon: (
         <svg
@@ -438,6 +467,7 @@ const DevUtilities = () => {
       title: "Bcrypt Generator",
       description:
         "Generate and verify bcrypt password hashes entirely offline.",
+      category: "Security & Crypto",
       path: "/devutilities/bcrypt",
       icon: (
         <svg
@@ -461,6 +491,7 @@ const DevUtilities = () => {
         "Convert CSS colors (HEX, RGB, HSL, CMYK, XYZ, Lab), evaluate WCAG accessibility contrast, and generate harmonic palettes and design system exports.",
       keywords:
         "harmony palette tint shade tone cielab xyz colorref contrast ratio wcag",
+      category: "Media & Graphics",
       path: "/devutilities/color",
       icon: (
         <svg
@@ -482,6 +513,7 @@ const DevUtilities = () => {
       title: "Image Color Palette Extractor",
       description:
         "Extract dominant color palettes and HEX, RGB, or HSL codes from any uploaded image. Export as CSS variables, Tailwind config, Sass, or JSON. Fully offline.",
+      category: "Media & Graphics",
       path: "/devutilities/color-extractor",
       icon: (
         <svg
@@ -503,6 +535,7 @@ const DevUtilities = () => {
       title: "QR Code Generator",
       description:
         "Create customizable QR codes from text or URLs with color and size options. Fully offline.",
+      category: "Media & Graphics",
       path: "/devutilities/qrcode",
       icon: (
         <svg
@@ -524,6 +557,7 @@ const DevUtilities = () => {
       title: "Text Processing Suite",
       description:
         "Convert string cases, inspect layout metrics, analyze word densities, and clean/sort lists.",
+      category: "Code & Text",
       path: "/devutilities/text-case",
       icon: (
         <svg
@@ -545,6 +579,7 @@ const DevUtilities = () => {
       title: "Image Optimizer",
       description:
         "Compress, resize, and convert PNG, JPEG, and GIF images to WebP, JPEG, or PNG entirely in your browser.",
+      category: "Media & Graphics",
       path: "/devutilities/image-optimizer",
       icon: (
         <svg
@@ -567,6 +602,7 @@ const DevUtilities = () => {
       title: "Timestamp",
       description:
         "Convert epoch/unix values to human-readable datetime formats and parse date strings.",
+      category: "Code & Text",
       path: "/devutilities/timestamp",
       icon: (
         <svg
@@ -589,6 +625,7 @@ const DevUtilities = () => {
       title: "Timezone Converter",
       description:
         "Convert date/time across timezones and track a live multi-timezone world clock, fully offline.",
+      category: "Code & Text",
       path: "/devutilities/timezone-converter",
       keywords: "timezone convert world clock utc offset dst",
       icon: (
@@ -612,6 +649,7 @@ const DevUtilities = () => {
       title: "Markdown Studio",
       description:
         "Write markdown and instantly preview rendered HTML output, or build markdown tables visually.",
+      category: "Code & Text",
       path: "/devutilities/markdown",
       icon: (
         <svg
@@ -633,6 +671,7 @@ const DevUtilities = () => {
       title: "Mock JSON Generator",
       description:
         "Generate mock JSON data for testing and prototyping. Fully offline.",
+      category: "JSON & Data",
       path: "/devutilities/mock-json-generator",
       icon: (
         <svg
@@ -653,6 +692,7 @@ const DevUtilities = () => {
     {
       title: "JSON Schema Validator",
       description: "Validate JSON data against a schema.",
+      category: "JSON & Data",
       path: "/devutilities/json-schema-validator",
       icon: (
         <svg
@@ -673,6 +713,7 @@ const DevUtilities = () => {
     {
       title: "JSON to Schema",
       description: "Generate JSON Schema from raw JSON data.",
+      category: "JSON & Data",
       path: "/devutilities/json-to-schema",
       icon: (
         <svg
@@ -694,6 +735,7 @@ const DevUtilities = () => {
       title: "Robots.txt Generator",
       description:
         "Generate robots.txt files with live preview, sitemap, crawl delay and copy support.",
+      category: "Web & Network",
       path: "/devutilities/robots-txt-generator",
       icon: (
         <svg
@@ -715,6 +757,7 @@ const DevUtilities = () => {
       title: "SQL Formatter & Minifier",
       description:
         "Beautify messy SQL with proper keyword casing and indentation, or minify to a single line. Fully offline.",
+      category: "JSON & Data",
       path: "/devutilities/sql",
       icon: (
         <svg
@@ -736,6 +779,7 @@ const DevUtilities = () => {
       title: "SQL Schema Converter",
       description:
         "Convert SQL CREATE TABLE schemas into JSON Schema and Markdown tables.",
+      category: "JSON & Data",
       path: "/devutilities/sql-converter",
       icon: (
         <svg
@@ -757,6 +801,7 @@ const DevUtilities = () => {
       title: "JSON ↔ SQL INSERT Converter",
       description:
         "Convert JSON arrays to SQL INSERT statements and supported SQL INSERT statements back to JSON. Fully offline.",
+      category: "JSON & Data",
       path: "/devutilities/json-sql",
       icon: (
         <svg
@@ -778,6 +823,7 @@ const DevUtilities = () => {
       title: "HTML Entity Converter",
       description:
         "Encode and decode HTML/XML entities using named or numeric formats. Fully offline.",
+      category: "Code & Text",
       path: "/devutilities/html-entity",
       icon: (
         <svg
@@ -799,6 +845,7 @@ const DevUtilities = () => {
       title: "Flexbox & Grid Generator",
       description:
         "Generate flexbox and grid layouts for responsive design. Fully offline.",
+      category: "CSS & Styling",
       path: "/devutilities/flexbox-grid-generator",
       icon: (
         <svg
@@ -820,6 +867,7 @@ const DevUtilities = () => {
       title: "CSS Grid Area Generator",
       description:
         "Visually paint named grid areas and generate grid-template-areas CSS and matching HTML.",
+      category: "CSS & Styling",
       path: "/devutilities/css-grid-areas",
       icon: (
         <svg
@@ -841,6 +889,7 @@ const DevUtilities = () => {
       title: "IP Subnet Calculator",
       description:
         "Calculate IPv4 subnet masks, host ranges, wildcard masks, and visualize CIDR bit maps — completely offline.",
+      category: "Web & Network",
       path: "/devutilities/subnet",
       icon: (
         <svg
@@ -862,6 +911,7 @@ const DevUtilities = () => {
       title: "User Agent Parser",
       description:
         "Parse browser user-agent strings and inspect client environment information.",
+      category: "Web & Network",
       path: "/devutilities/user-agent",
       icon: (
         <svg
@@ -883,6 +933,7 @@ const DevUtilities = () => {
       title: "Chmod Calculator",
       description:
         "Calculate Unix file permissions in octal and symbolic formats visually.",
+      category: "Security & Crypto",
       path: "/devutilities/chmod",
       icon: (
         <svg
@@ -903,6 +954,7 @@ const DevUtilities = () => {
     {
       title: "CRON Expression Generator & Descriptor",
       description: "Generate and inspect CRON expressions. Fully offline.",
+      category: "Code & Text",
       path: "/devutilities/cron",
       icon: (
         <svg
@@ -924,6 +976,7 @@ const DevUtilities = () => {
       title: "CSS Glassmorphism & Box-Shadow Playground",
       description:
         "Design modern glassmorphism effects with backdrop blur, shadows, and live CSS export.",
+      category: "CSS & Styling",
       path: "/devutilities/glassmorphism",
       icon: (
         <svg
@@ -945,6 +998,7 @@ const DevUtilities = () => {
       title: "CSS Filter & Backdrop Playground",
       description:
         "Experiment with image filters and backdrop effects, custom images, presets, and copy-ready CSS.",
+      category: "CSS & Styling",
       path: "/devutilities/css-filter",
       keywords:
         "filter backdrop-filter blur brightness contrast grayscale image effects",
@@ -972,6 +1026,7 @@ const DevUtilities = () => {
       title: "Number Base Converter & Bitwise Visualizer",
       description:
         "Convert numbers between decimal, hexadecimal, binary, and octal, and visualize bitwise AND/OR/XOR/NOT/shift operations bit by bit.",
+      category: "Code & Text",
       path: "/devutilities/number-base-converter",
       icon: (
         <svg
@@ -993,6 +1048,7 @@ const DevUtilities = () => {
       title: "CSS Clip-path Maker & Shape Generator",
       description:
         "Design CSS clip-path shapes with draggable vertices, presets, and instant copy-ready CSS output.",
+      category: "CSS & Styling",
       path: "/devutilities/clip-path",
       icon: (
         <svg
@@ -1020,6 +1076,7 @@ const DevUtilities = () => {
       title: "URL Slug Generator & Text Sanitizer",
       description:
         "Convert raw text into clean, URL-safe slugs with customizable separators, casing, and accent stripping.",
+      category: "Code & Text",
       path: "/devutilities/slug-generator",
       icon: (
         <svg
@@ -1041,6 +1098,7 @@ const DevUtilities = () => {
       title: "CSS Animation Generator",
       description:
         "Create custom keyframe animations, customize duration and timing functions, and copy generated CSS.",
+      category: "CSS & Styling",
       path: "/devutilities/css-animation",
       icon: (
         <svg
@@ -1070,6 +1128,7 @@ const DevUtilities = () => {
         "Design custom transition easing curves visually and preview animations in real time.",
       keywords:
         "cubic bezier easing curve timing function transition animation",
+      category: "CSS & Styling",
       path: "/devutilities/cubic-bezier",
       icon: (
         <svg
@@ -1092,6 +1151,7 @@ const DevUtilities = () => {
     {
       title: "CSS Gradient Generator",
       description: "Create beautiful CSS gradients with live preview",
+      category: "CSS & Styling",
       path: "/devutilities/css-gradient",
       icon: (
         <svg
@@ -1112,6 +1172,7 @@ const DevUtilities = () => {
     {
       title: "CSS Background Pattern Generator",
       description: "Generate CSS background patterns using gradients.",
+      category: "CSS & Styling",
       path: "/devutilities/css-pattern",
       icon: (
         <svg
@@ -1133,6 +1194,7 @@ const DevUtilities = () => {
       title: "CSS Border-Image Generator",
       description:
         "Design custom sliced image borders and generate copy-ready CSS properties visually.",
+      category: "CSS & Styling",
       path: "/devutilities/border-image",
       icon: (
         <svg
@@ -1154,6 +1216,7 @@ const DevUtilities = () => {
       title: "CSS Custom Blob & Fancy Border Radius",
       description:
         "Design organic blob shapes using visual handles and advanced 8-point border-radius.",
+      category: "CSS & Styling",
       path: "/devutilities/fancy-border-radius",
       icon: (
         <svg
@@ -1175,6 +1238,7 @@ const DevUtilities = () => {
       title: "Password Generator",
       description:
         "Generate secure passwords and analyze entropy, strength, and crack times.",
+      category: "Security & Crypto",
       path: "/devutilities/password-generator",
       icon: (
         <svg
@@ -1196,6 +1260,7 @@ const DevUtilities = () => {
       title: "Lorem Ipsum Generator",
       description:
         "Generate dummy placeholder text in various formats and lengths entirely offline for layouts and testing.",
+      category: "Code & Text",
       path: "/devutilities/lorem-ipsum",
       icon: (
         <svg
@@ -1217,6 +1282,7 @@ const DevUtilities = () => {
       title: "HTML Multi Converter",
       description:
         "Convert HTML into JSX, Markdown, or Plain Text instantly. Fully offline.",
+      category: "Code & Text",
       path: "/devutilities/html-multi-converter",
       icon: (
         <svg
@@ -1237,6 +1303,7 @@ const DevUtilities = () => {
     {
       title: "JSON Path & JSON Query Playground",
       description: "JSON Path and JSON Query Playground. Fully offline.",
+      category: "JSON & Data",
       path: "/devutilities/jsonpath-playground",
       icon: (
         <svg
@@ -1258,6 +1325,7 @@ const DevUtilities = () => {
       title: "Design Token Generator",
       description:
         "Generate design system tokens for colors, typography, and spacing. Export as CSS variables, Tailwind config, or Sass. Fully offline.",
+      category: "CSS & Styling",
       path: "/devutilities/design-tokens",
       icon: (
         <svg
@@ -1279,6 +1347,7 @@ const DevUtilities = () => {
       title: "Docker Configuration Generator",
       description:
         "Generate production-ready Dockerfile and docker-compose.yml configurations client-side.",
+      category: "Code & Text",
       path: "/devutilities/docker-generator",
       icon: (
         <svg
@@ -1300,6 +1369,7 @@ const DevUtilities = () => {
       title: "Bundler Configuration Generator",
       description:
         "Generate Vite or Webpack config files from visual options. Fully offline.",
+      category: "Code & Text",
       path: "/devutilities/bundler-generator",
       icon: (
         <svg
@@ -1322,6 +1392,7 @@ const DevUtilities = () => {
       title: "Git Command Builder",
       description:
         "Scenario-based Git command builder to help find and customize commands for common tasks.",
+      category: "Code & Text",
       path: "/devutilities/git-builder",
       icon: (
         <svg
@@ -1373,6 +1444,7 @@ const DevUtilities = () => {
       title: "API Status Checker",
       description:
         "Test API endpoints and inspect HTTP status, response time and output.",
+      category: "Web & Network",
       path: "/devutilities/api-status-checker",
       icon: (
         <svg
@@ -1394,6 +1466,7 @@ const DevUtilities = () => {
       title: ".gitignore Generator",
       description:
         "Generate custom, compiled .gitignore configurations for languages, IDEs, and OS environments.",
+      category: "Code & Text",
       path: "/devutilities/gitignore-generator",
       icon: (
         <svg
@@ -1416,6 +1489,7 @@ const DevUtilities = () => {
       title: "ASCII Art Generator",
       description:
         "Convert text strings into custom ASCII art banners for code comments and terminals.",
+      category: "Media & Graphics",
       path: "/devutilities/ascii-banner",
       icon: (
         <svg
@@ -1438,6 +1512,7 @@ const DevUtilities = () => {
       title: "HTTP Request Convertor",
       description:
         "Convert between cURL, Fetch API, and Axios request formats offline with accurate request parsing.",
+      category: "Web & Network",
       path: "/devutilities/http-request-convertor",
       icon: (
         <svg
@@ -1477,6 +1552,7 @@ const DevUtilities = () => {
       title: "Meta Tags Generator",
       description:
         "Generate SEO, Open Graph, and Twitter Card meta tags with live previews.",
+      category: "Web & Network",
       path: "/devutilities/meta-tags",
       icon: (
         <svg
@@ -1498,6 +1574,7 @@ const DevUtilities = () => {
       title: "JSON-LD Schema Generator",
       description:
         "Build structured schema.org JSON-LD markup for SEO rich results, entirely offline.",
+      category: "Web & Network",
       path: "/devutilities/json-ld-generator",
       icon: (
         <svg
@@ -1518,6 +1595,7 @@ const DevUtilities = () => {
     {
       title: "SVG Wave & Shape Divider Generator",
       description: "Design organic SVG section dividers and curves visually.",
+      category: "Media & Graphics",
       path: "/devutilities/shape-divider",
       icon: (
         <svg
@@ -1539,6 +1617,7 @@ const DevUtilities = () => {
       title: "Favicon Generator",
       description:
         "Generate multi-size favicons, apple-touch-icon, and site.webmanifest from a single image. Download as ZIP.",
+      category: "Media & Graphics",
       path: "/devutilities/favicon-generator",
       keywords: "favicon icon manifest pwa webmanifest apple-touch-icon",
       icon: (
@@ -1561,6 +1640,7 @@ const DevUtilities = () => {
       title: "CSS Box Shadow & Glow Generator",
       description:
         "Design multi-layer box shadows and glows with live preview and copy-ready CSS output.",
+      category: "CSS & Styling",
       path: "/devutilities/box-shadow",
       keywords: "shadow glow css box-shadow inset layer tailwind",
       icon: (
@@ -1583,6 +1663,7 @@ const DevUtilities = () => {
       title: "Cryptographic Keypair Generator",
       description:
         "Generate secure cryptographic key pairs for various algorithms.",
+      category: "Security & Crypto",
       path: "/devutilities/keypair-generator",
       icon: (
         <svg
@@ -1605,6 +1686,7 @@ const DevUtilities = () => {
       title: "HTTP Status Code Explorer",
       description:
         "Search and explore HTTP status codes, meanings, categories, and standard descriptions completely offline.",
+      category: "Web & Network",
       path: "/devutilities/http-status-explorer",
       keywords: "http status code 200 404 500 error api response rfc offline",
     },
@@ -1612,6 +1694,7 @@ const DevUtilities = () => {
       title: "Security Headers Builder",
       description:
         "Build and configure HTTP security headers for stronger web application security.",
+      category: "Security & Crypto",
       path: "/devutilities/security-headers",
       icon: (
         <svg
@@ -1644,6 +1727,7 @@ const DevUtilities = () => {
     {
       title: "Web Vitals & Performance Budget Calculator",
       description: "Calculate budget based on your website's metrics.",
+      category: "Web & Network",
       path: "/devutilities/performance-budget",
       icon: (
         <svg
@@ -1665,6 +1749,7 @@ const DevUtilities = () => {
       title: "CSS Cursor Playground",
       description:
           "Play around, test, and copy different cursor CSS style effects.",
+      category: "CSS & Styling",
       path: "/devutilities/css-cursor-playground",
       icon: (
           <svg
@@ -1706,6 +1791,10 @@ const DevUtilities = () => {
   );
 
   const matchedCards = uniqueCards.filter((card) => {
+    const matchesCategory =
+      selectedCategory === "All" || card.category === selectedCategory;
+    if (!matchesCategory) return false;
+    
     const query = searchQuery.toLowerCase().trim();
     if (!query) return true;
 
@@ -1713,13 +1802,15 @@ const DevUtilities = () => {
     const cardDesc = (card.description || "").toLowerCase();
     const cardPath = (card.path || "").toLowerCase();
     const cardKeywords = (card.keywords || "").toLowerCase();
+    const cardCategory = (card.category || "").toLowerCase();
 
-    // 1. Direct substring match on title, description, or path
+    // 1. Direct substring match on title, description, path, keywords, or category
     if (
       cardTitle.includes(query) ||
       cardDesc.includes(query) ||
       cardPath.includes(query) ||
-      cardKeywords.includes(query)
+      cardKeywords.includes(query) ||
+      cardCategory.includes(query)
     ) {
       return true;
     }
@@ -1743,17 +1834,14 @@ const DevUtilities = () => {
       .filter((word) => !stopWords.has(word) && word.length > 0);
 
     if (queryWords.length > 0) {
-      const cardContent = `${cardTitle} ${cardDesc} ${cardPath} ${cardKeywords}`;
+      const cardContent = `${cardTitle} ${cardDesc} ${cardPath} ${cardKeywords} ${cardCategory}`;
       return queryWords.every((word) => cardContent.includes(word));
     }
 
     return false;
   });
 
-  const filteredUniqueCards =
-    searchQuery.trim() && matchedCards.length === 0
-      ? uniqueCards
-      : matchedCards;
+  const filteredUniqueCards = matchedCards;
 
   // Splitting both favourite and other cards
   const favoriteSet = new Set(favoritePaths);
@@ -1876,54 +1964,28 @@ const DevUtilities = () => {
               <div className="text-xs font-black uppercase tracking-widest mb-2">
                 Utility Status: {uniqueCards.length} Active Utilities
               </div>
-              <div className="text-[10px] font-bold text-gray-500 uppercase truncate">
-                {uniqueCards
-                  .map((card) => {
-                    const t = card.title.toUpperCase();
-                    if (t.includes("REGEX")) return "REGEXP";
-                    if (t.includes("YAML")) return "JSON/YAML";
-                    if (t.includes("JSON SCHEMA")) return "JSON SCHEMA";
-                    if (t.includes("MOCK JSON")) return "MOCK JSON";
-                    if (t.includes("JSON PATH")) return "JSON PATH";
-                    if (t.includes("JSON")) return "JSON";
-                    if (t.includes("BASE64")) return "BASE64/URL";
-                    if (t.includes("TIMESTAMP")) return "TIMESTAMP";
-                    if (t.includes("UUID")) return "UUID";
-                    if (t.includes("JWT ENCODE")) return "JWT ENCODE";
-                    if (
-                      t.includes("JWT DECODE") ||
-                      t === "JWT DECODER" ||
-                      (t.includes("JWT") && !t.includes("ENCODE"))
-                    )
-                      return "JWT DECODE";
-                    if (t.includes("DIFF")) return "DIFF";
-                    if (t.includes("HASH")) return "HASH";
-                    if (t.includes("COLOR")) return "COLOR";
-                    if (t.includes("CODE")) return "CODE";
-                    if (t.includes("QR")) return "QR";
-                    if (t.includes("SUBNET")) return "SUBNET";
-                    if (t.includes("SQL")) return "SQL";
-                    if (t.includes("URL")) return "URL";
-                    if (t.includes("HTML MULTI")) return "HTML CONVERTER";
-                    if (t.includes("HTML")) return "HTML ENTITY";
-                    if (t.includes("TEXT CASE")) return "TEXT CASE";
-                    if (t.includes("MARKDOWN TABLE")) return "MD TABLE";
-                    if (t.includes("MARKDOWN")) return "MARKDOWN";
-                    if (t.includes("FLEXBOX")) return "FLEX/GRID";
-                    if (t.includes("AGENT")) return "USER AGENT";
-                    if (t.includes("CHMOD")) return "CHMOD";
-                    if (t.includes("CRON")) return "CRON";
-                    if (t.includes("GLASSMORPHISM")) return "GLASSMORPHISM";
-                    if (t.includes("GRADIENT")) return "CSS GRADIENT";
-                    if (t.includes("CSS UNIT")) return "CSS UNITS";
-                    if (t.includes("BCRYPT")) return "BCRYPT";
-                    if (t.includes("PASSWORD")) return "PASSWORD";
-                    if (t.includes("LOREM")) return "LOREM IPSUM";
-                    if (t.includes("SVG")) return "SVG";
-                    if (t.includes("DESIGN TOKEN")) return "DESIGN TOKENS";
-                    return t;
-                  })
-                  .join(" • ")}
+              <div className="flex flex-wrap gap-1.5">
+                {CATEGORIES.map((cat) => {
+                  const isSelected = selectedCategory === cat;
+                  return (
+                    <button
+                      key={cat}
+                      type="button"
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? dark
+                            ? "bg-white text-black"
+                            : "bg-black text-white"
+                          : dark
+                            ? "text-gray-400 hover:text-white hover:bg-zinc-800/60"
+                            : "text-gray-500 hover:text-black hover:bg-neutral-200/60"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

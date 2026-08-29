@@ -282,6 +282,12 @@ const SIDEBAR_SECTIONS = [
         path: "/devutilities/jwt",
       },
       {
+        label: "Public / Private Key Pair Generator",
+        description:
+          "Generate RSA, ECDSA, and Ed25519 public/private cryptographic key pairs offline.",
+        path: "/devutilities/keypair-generator",
+      },
+      {
         label: "CSS Clip-path Maker & Shape Generator",
         description:
           "Design CSS clip-path shapes with draggable vertices, presets, and instant copy-ready CSS output.",
@@ -343,6 +349,12 @@ const SIDEBAR_SECTIONS = [
         description:
           "Visually paint named grid areas and generate grid-template-areas CSS and matching HTML.",
         path: "/devutilities/css-grid-areas",
+      },
+      {
+        label: "CSS Pattern Generator",
+        description:
+          "Generate repeatable background patterns and geometric textures in pure CSS.",
+        path: "/devutilities/css-pattern",
       },
       {
         label: "Color Converter & Analyzer",

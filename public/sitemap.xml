@@ -525,6 +525,48 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/json-ld-generator</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/json-sql</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/bundler-generator</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/http-status-explorer</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/security-headers</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/performance-budget</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://dev-tasks-beta.vercel.app/devutilities/css-cursor-playground</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://dev-tasks-beta.vercel.app/about</loc>
     <lastmod>2026-07-20</lastmod>
     <changefreq>weekly</changefreq>

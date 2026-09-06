@@ -149,6 +149,11 @@ const SIDEBAR_SECTIONS = [
         path: "/devutilities/json-yaml-csv-xml",
       },
       {
+        label: "SemVer Calculator",
+        description: "Semantic version bump and package range tester",
+        path: "/devutilities/semver-calculator",
+      },
+      {
         label: "XML Validator & Formatter",
         description: "Validate syntax and beautify or minify XML data.",
         path: "/devutilities/xml-validator",

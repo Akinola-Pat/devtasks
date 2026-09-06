@@ -12,7 +12,7 @@ export default function SemverCalculator() {
   const [targetVersionTest, setTargetVersionTest] = useState("1.4.2");
   const [copiedKey, setCopiedKey] = useState(null);
 
-  // Parse Version safely
+  //parse versions safely
   const parsed = useMemo(() => {
     const clean = currentVersion.trim().replace(/^v/i, "");
     const match = clean.match(/^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z.-]+))?$/);
@@ -25,7 +25,6 @@ export default function SemverCalculator() {
     };
   }, [currentVersion]);
 
-  // Bump calculations
   const bumps = useMemo(() => {
     if (!parsed) return null;
     const { major, minor, patch } = parsed;
@@ -37,7 +36,7 @@ export default function SemverCalculator() {
     };
   }, [parsed, preReleaseTag]);
 
-  // SemVer range evaluator
+  //range Evaluate
   const rangeMatchResult = useMemo(() => {
     const range = rangeInput.trim();
     const target = targetVersionTest.trim().replace(/^v/i, "");
@@ -49,7 +48,7 @@ export default function SemverCalculator() {
     const tMin = parseInt(targetParts[2], 10);
     const tPatch = parseInt(targetParts[3], 10);
 
-    // Exact match
+    //if there is a match
     if (/^\d+\.\d+\.\d+$/.test(range)) {
       const match = range === target;
       return { valid: true, matches: match, desc: `Requires exact match ${range}` };
@@ -109,7 +108,6 @@ export default function SemverCalculator() {
         dark ? "bg-zinc-950" : "bg-[#F7F7F7]"
       }`}
     >
-      {/* Background blurs */}
       <div
         className={`absolute top-[-10%] right-[-10%] w-[400px] h-[400px] rounded-full blur-[100px] opacity-20 ${
           dark ? "bg-zinc-800" : "bg-neutral-300"
@@ -121,15 +119,14 @@ export default function SemverCalculator() {
         }`}
       />
 
-      {/* Main Card Container */}
       <div
-        className={`relative z-10 w-full max-w-7xl rounded-[32px] border shadow-xl overflow-hidden ${
+        className={`relative z-10 w-full max-w-7xl rounded-4xl border shadow-xl overflow-hidden ${
           dark ? "bg-zinc-900 border-zinc-800" : "bg-white border-neutral-200"
         }`}
       >
         <div className={`h-2 w-full ${dark ? "bg-white" : "bg-black"}`} />
 
-        {/* Header section */}
+        {/*header*/}
         <div className="px-6 sm:px-8 pt-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Link
@@ -176,8 +173,6 @@ export default function SemverCalculator() {
 
         {/* Content Body */}
         <div className="p-6 sm:p-8 space-y-6">
-          
-          {/* Version Inputs & Anatomy */}
           <div
             className={`p-6 rounded-2xl border space-y-5 ${
               dark ? "bg-zinc-950 border-zinc-800" : "bg-neutral-50 border-neutral-200"
@@ -226,8 +221,6 @@ export default function SemverCalculator() {
                 />
               </div>
             </div>
-
-            {/* Semantic Breakdown */}
             {parsed && (
               <div className="grid grid-cols-3 gap-3 pt-2">
                 <div
@@ -269,8 +262,6 @@ export default function SemverCalculator() {
               </div>
             )}
           </div>
-
-          {/* Next Version Calculators */}
           {bumps && (
             <div className="space-y-3">
               <label
@@ -340,8 +331,6 @@ export default function SemverCalculator() {
               </div>
             </div>
           )}
-
-          {/* Range Constraint Tester */}
           <div
             className={`p-6 rounded-2xl border space-y-4 ${
               dark ? "bg-zinc-950 border-zinc-800" : "bg-neutral-50 border-neutral-200"
@@ -355,7 +344,6 @@ export default function SemverCalculator() {
                 Test whether a package.json range constraint accepts a given version.
               </p>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
@@ -397,8 +385,6 @@ export default function SemverCalculator() {
                 />
               </div>
             </div>
-
-            {/* Range Result Box */}
             <div
               className={`p-4 rounded-xl border flex items-center justify-between ${
                 dark ? "bg-zinc-900 border-zinc-800" : "bg-white border-neutral-200"
@@ -407,9 +393,9 @@ export default function SemverCalculator() {
               <div className="flex items-center gap-3">
                 {rangeMatchResult.valid ? (
                   rangeMatchResult.matches ? (
-                    <CheckCircle2 className={`w-5 h-5 flex-shrink-0 ${dark ? "text-white" : "text-black"}`} />
+                    <CheckCircle2 className={`w-5 h-5 shrink-0 ${dark ? "text-white" : "text-black"}`} />
                   ) : (
-                    <XCircle className="w-5 h-5 text-neutral-400 flex-shrink-0" />
+                    <XCircle className="w-5 h-5 text-neutral-400 shrink-0" />
                   )
                 ) : (
                   <span className="w-2.5 h-2.5 rounded-full bg-neutral-400" />
@@ -431,7 +417,6 @@ export default function SemverCalculator() {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

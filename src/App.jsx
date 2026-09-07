@@ -22,7 +22,7 @@ import DeleteHistory from "./pages/TaskManagement/taskmanage/DeleteHistory";
 import ListTasks from "./pages/TaskManagement/taskmanage/ListTasks";
 import JsonTypesConverter from "./pages/DevUtilities/devutilities/JsonTypesConverter";
 import RobotsTxtGenerator from "./pages/DevUtilities/devutilities/RobotsTxtGenerator";
-import CssCursorPlayground from "./pages/DevUtilities/devutilities/CssCursorPlayground.jsx"
+import CssCursorPlayground from "./pages/DevUtilities/devutilities/CssCursorPlayground.jsx";
 
 // Resource Hub Imports
 import ResourceHub from "./pages/ResourceHub/ResourceHub";
@@ -72,6 +72,7 @@ import NumberBaseConverter from "./pages/DevUtilities/devutilities/NumberBaseCon
 import PasswordGenerator from "./pages/DevUtilities/devutilities/PasswordGenerator";
 import QrCodeGenerator from "./pages/DevUtilities/devutilities/QrCodeGenerator";
 import RegexTester from "./pages/DevUtilities/devutilities/RegexTester";
+import SemverCalculator from "./pages/DevUtilities/devutilities/SemverCalculator.jsx";
 import ShapeDividerGenerator from "./pages/DevUtilities/devutilities/ShapeDividerGenerator";
 import SqlFormatter from "./pages/DevUtilities/devutilities/SqlFormatter";
 import SqlSchemaConverter from "./pages/DevUtilities/devutilities/SqlSchemaConverter";
@@ -622,6 +623,10 @@ function AppInner({ toggleHUD, hudVisible }) {
               <Route
                 path="/devutilities/text-list-cleaner"
                 element={<Navigate to="/devutilities/text-case" replace />}
+              />
+              <Route
+                path="/devutilities/semver-calculator"
+                element={<SemverCalculator />}
               />
               <Route
                 path="/devutilities/sql-converter"

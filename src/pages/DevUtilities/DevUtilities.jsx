@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import SIDEBAR_SECTIONS from "../../config/sidebarSections";
+import { Tag } from "lucide-react";
 
 const DevUtilities = () => {
   const { dark } = useTheme();
@@ -105,6 +106,12 @@ const DevUtilities = () => {
           />
         </svg>
       ),
+    },
+    {
+      title: "SemVer Calculator & Range Tester",
+      description: "Calculate semantic version bumps, pre-release tags and test caret and tilde package ranges.",
+      path: "/devutilities/semver-calculator",
+      icon: <Tag className="w-5 h-5" />,
     },
     {
       title: "SVG Toolkit",
